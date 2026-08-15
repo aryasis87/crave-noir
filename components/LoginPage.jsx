@@ -1,77 +1,84 @@
 'use client'
 
 import { useState } from 'react'
-import { Eye, EyeOff } from 'lucide-react'
+import Link from 'next/link'
 
 export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false)
+  const [form, setForm] = useState({ surel: '', sandi: '' })
+  const [memproses, setMemproses] = useState(false)
+
+  const ubah = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }))
+
+  const kirim = (e) => {
+    e.preventDefault()
+    setMemproses(true)
+    // Purwarupa desain — tidak ada autentikasi sungguhan.
+    setTimeout(() => setMemproses(false), 1000)
+  }
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-pink-50 via-white to-purple-100 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-900 px-4">
-      <div className="backdrop-blur-xl bg-void-2/60 dark:bg-void-2/60 border border-chalk/25/30 dark:border-chalk/12 rounded-3xl shadow-2xl p-8 sm:p-10 w-full max-w-md space-y-8 transition-all duration-300">
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-chalk dark:text-chalk tracking-tight">
-            Welcome Back
-          </h1>
-          <p className="text-sm text-ash dark:text-ash">
-            Log in to rediscover pleasure, privately and securely.
-          </p>
-        </div>
+    <section className="relative overflow-hidden bg-void pt-28 pb-20 md:pt-36 md:pb-28">
+      <div aria-hidden="true" className="dim-glow absolute inset-x-0 top-0 h-72" />
 
-        <form className="space-y-6">
-          {/* Email */}
-          <div className="space-y-1">
-            <label htmlFor="email" className="text-sm font-medium text-ash dark:text-ash">
-              Email Address
+      <div className="relative z-10 mx-auto w-full max-w-md px-6">
+        <p className="micro mb-5 text-neon">Akun</p>
+        <h1 className="text-[2rem] leading-[1.08] md:text-[2.5rem]">Masuk</h1>
+        <p className="mt-4 leading-relaxed text-ash">
+          Untuk melihat riwayat pesanan dan status pengiriman. Nama merek tidak pernah muncul di
+          surel maupun notifikasi yang kami kirim.
+        </p>
+
+        <form onSubmit={kirim} className="mt-10 space-y-7">
+          <div>
+            <label htmlFor="surel" className="micro mb-3 block text-ash/60">
+              Surel <span className="text-neon">*</span>
             </label>
             <input
+              id="surel"
+              name="surel"
               type="email"
-              id="email"
-              placeholder="you@love.com"
-              className="w-full px-4 py-3 rounded-xl bg-void-2/80 dark:bg-void-2/80 border border-chalk/12 dark:border-chalk/12 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-600 placeholder:text-ash dark:placeholder:text-ash"
+              required
+              value={form.surel}
+              onChange={ubah}
+              className="w-full border-b border-chalk/20 bg-transparent pb-2 text-sm text-chalk focus:border-neon focus:outline-none"
             />
           </div>
 
-          {/* Password */}
-          <div className="space-y-1 relative">
-            <label htmlFor="password" className="text-sm font-medium text-ash dark:text-ash">
-              Password
+          <div>
+            <label htmlFor="sandi" className="micro mb-3 block text-ash/60">
+              Kata sandi <span className="text-neon">*</span>
             </label>
             <input
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              placeholder="••••••••"
-              className="w-full px-4 py-3 rounded-xl bg-void-2/80 dark:bg-void-2/80 border border-chalk/12 dark:border-chalk/12 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-600 placeholder:text-ash dark:placeholder:text-ash"
+              id="sandi"
+              name="sandi"
+              type="password"
+              required
+              value={form.sandi}
+              onChange={ubah}
+              className="w-full border-b border-chalk/20 bg-transparent pb-2 text-sm text-chalk focus:border-neon focus:outline-none"
             />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-9 right-3 text-ash hover:text-neon transition"
-            >
-              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
           </div>
 
-          <div className="flex justify-between text-xs text-ash dark:text-ash">
-            <a href="/forgot" className="hover:underline text-neon">
-              Forgot password?
-            </a>
-          </div>
-
-          {/* CTA */}
           <button
             type="submit"
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-neon via-pink-600 to-pink-700 hover:from-pink-600 hover:to-pink-800 text-chalk font-semibold tracking-wide shadow-md hover:shadow-lg transition-all"
+            disabled={memproses}
+            className="w-full bg-neon py-4 text-sm font-bold text-void transition-colors hover:bg-chalk disabled:opacity-70"
           >
-            Log In
+            {memproses ? 'Memproses…' : 'Masuk'}
           </button>
         </form>
 
-        <p className="text-center text-sm text-ash dark:text-ash">
-          Don’t have an account?{' '}
-          <a href="/register" className="text-neon hover:underline font-medium">
-            Sign up
-          </a>
+        <div className="mt-8 flex flex-col gap-3 border-t border-chalk/10 pt-6">
+          <Link href="/forgot" className="micro text-neon hover:text-chalk">
+            Lupa kata sandi
+          </Link>
+          <Link href="/register" className="micro text-ash hover:text-chalk">
+            Belum punya akun — daftar
+          </Link>
+        </div>
+
+        <p className="micro mt-8 leading-[1.7] text-ash/45">
+          Purwarupa desain — tidak ada autentikasi sungguhan dan tidak ada data yang tersimpan.
         </p>
       </div>
     </section>

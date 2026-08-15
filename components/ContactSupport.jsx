@@ -1,118 +1,67 @@
-'use client'
+import Link from 'next/link'
 
-import { useState } from 'react'
-import { Phone, Mail, MessageCircle } from 'lucide-react'
+const saluran = [
+  {
+    label: 'Chat',
+    nilai: 'Setiap hari 10.00–22.00 WIB',
+    ket: 'Dijawab orang, bukan bot. Rata-rata dibalas di bawah 10 menit.',
+  },
+  {
+    label: 'Surel',
+    nilai: 'halo@positivecrave.id',
+    href: 'mailto:halo@positivecrave.id',
+    ket: 'Untuk pertanyaan panjang atau klaim garansi.',
+  },
+  {
+    label: 'Telepon',
+    nilai: '+62 812 3456 7890',
+    href: 'tel:+628123456789',
+    ket: 'Sen–Jum 09.00–17.00 WIB.',
+  },
+]
 
 export default function ContactSupport() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-
-  const handleChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    console.log('Message Sent:', formData)
-    // TODO: handle send logic (API)
-  }
-
   return (
-    <section className="relative bg-gradient-to-b from-pink-50 to-white dark:from-zinc-900 dark:to-zinc-950 py-24 px-6 md:px-12 text-chalk dark:text-chalk">
-      <div className="max-w-6xl mx-auto space-y-24">
+    <section id="kontak" className="relative overflow-hidden bg-void py-20 md:py-28">
+      <div aria-hidden="true" className="dim-glow absolute inset-x-0 bottom-0 h-72" />
 
-        {/* Heading */}
-        <div className="text-center space-y-5">
-          <h1 className="text-4xl md:text-5xl font-bold text-chalk dark:text-chalk">
-            Let’s Connect, Comfortably
-          </h1>
-          <p className="text-ash dark:text-ash text-lg max-w-2xl mx-auto">
-            Our discreet and friendly support team is ready to help—whether you're shy or curious.
-          </p>
-        </div>
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
+          <div>
+            <p className="micro mb-5 text-neon">Bantuan</p>
+            <h2 className="text-[2rem] leading-[1.1] md:text-[2.7rem]">
+              Tanya dulu tidak apa-apa
+            </h2>
+            <p className="mt-5 max-w-md leading-relaxed text-ash">
+              Tidak ada pertanyaan yang kami anggap terlalu dasar, dan tidak ada jawaban yang
+              berujung tawaran barang. Kalau memang belum perlu membeli, akan kami bilang begitu.
+            </p>
 
-        {/* Contact Options */}
-        <div className="grid md:grid-cols-3 gap-10 text-center">
-          <div className="bg-void-2 dark:bg-void-2/80 p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-            <div className="flex justify-center mb-4">
-              <Phone className="w-8 h-8 text-neon" />
-            </div>
-            <h3 className="font-semibold text-lg">Phone Support</h3>
-            <p className="text-ash dark:text-ash mt-2">
-              +62 812 3456 7890 <br />
-              Mon–Fri, 09:00–17:00 WIB
-            </p>
-          </div>
-          <div className="bg-void-2 dark:bg-void-2/80 p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-            <div className="flex justify-center mb-4">
-              <Mail className="w-8 h-8 text-neon" />
-            </div>
-            <h3 className="font-semibold text-lg">Email Us</h3>
-            <p className="text-ash dark:text-ash mt-2">
-              support@positivecrave.co.id <br />
-              We'll reply within 24 hours.
-            </p>
-          </div>
-          <div className="bg-void-2 dark:bg-void-2/80 p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-            <div className="flex justify-center mb-4">
-              <MessageCircle className="w-8 h-8 text-neon" />
-            </div>
-            <h3 className="font-semibold text-lg">Live Chat</h3>
-            <p className="text-ash dark:text-ash mt-2">
-              Click the chat icon at the bottom right to speak with us in real-time—anonymously.
-            </p>
-          </div>
-        </div>
-
-        {/* Form */}
-        <div className="bg-void-2 dark:bg-void-2/70 backdrop-blur-md rounded-2xl shadow-xl p-10 max-w-3xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block mb-2 font-medium">Your Name</label>
-              <input
-                type="text"
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Enter your name"
-                className="w-full px-4 py-3 rounded-lg border border-chalk/12 dark:border-chalk/12 bg-void-2 dark:bg-void-2 text-chalk dark:text-chalk focus:outline-none focus:ring-2 focus:ring-pink-500"
-              />
-            </div>
-            <div>
-              <label className="block mb-2 font-medium">Email Address</label>
-              <input
-                type="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="you@example.com"
-                className="w-full px-4 py-3 rounded-lg border border-chalk/12 dark:border-chalk/12 bg-void-2 dark:bg-void-2 text-chalk dark:text-chalk focus:outline-none focus:ring-2 focus:ring-pink-500"
-              />
-            </div>
-            <div>
-              <label className="block mb-2 font-medium">Message</label>
-              <textarea
-                name="message"
-                rows="5"
-                required
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="What's on your mind?"
-                className="w-full px-4 py-3 rounded-lg border border-chalk/12 dark:border-chalk/12 bg-void-2 dark:bg-void-2 text-chalk dark:text-chalk focus:outline-none focus:ring-2 focus:ring-pink-500"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full py-3 px-6 rounded-lg bg-neon hover:bg-neon text-chalk font-semibold transition"
+            <Link
+              href="/produk"
+              className="mt-9 inline-flex items-center justify-center bg-neon px-8 py-4 text-sm font-bold text-void transition-colors duration-300 hover:bg-chalk"
             >
-              Send Message
-            </button>
-          </form>
+              Lihat Koleksi
+            </Link>
+          </div>
+
+          <dl className="divide-y divide-chalk/10 border-y border-chalk/10">
+            {saluran.map((s) => (
+              <div key={s.label} className="py-6">
+                <dt className="micro text-ash/55">{s.label}</dt>
+                <dd className="mt-2 text-base font-bold text-chalk">
+                  {s.href ? (
+                    <a href={s.href} className="break-all transition-colors hover:text-neon">
+                      {s.nilai}
+                    </a>
+                  ) : (
+                    s.nilai
+                  )}
+                </dd>
+                <dd className="mt-1.5 text-sm leading-relaxed text-ash">{s.ket}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

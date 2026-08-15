@@ -1,103 +1,70 @@
-'use client'
+import Link from 'next/link'
 
-import { motion } from 'framer-motion'
-import { Heart, ArrowRight } from 'lucide-react'
-
-const featuredProducts = [
+const produk = [
   {
-    id: 1,
-    name: 'Intimate Vibe Pro',
-    price: '$99',
-    image: '/images/p12.jpeg',
-    badge: 'Best Seller',
-    span: 'row-span-2',
+    nama: 'Pulse Duo',
+    harga: 'Rp 1.290.000',
+    tingkat: 'Sedang',
+    desc: 'Dua motor terpisah dengan sepuluh pola getaran. Tahan percik, bukan tahan rendam.',
+    image: '/images/p5.jpg',
   },
   {
-    id: 2,
-    name: 'Couples Adventure Kit',
-    price: '$149',
-    image: '/images/p13.jpeg',
-    badge: 'Limited Edition',
-    span: '',
+    nama: 'Silken Pelumas',
+    harga: 'Rp 189.000',
+    tingkat: 'Lembut',
+    desc: 'Berbahan air, mudah dibilas, dan aman dipakai bersama alat berbahan silikon.',
+    image: '/images/p7.jpg',
   },
   {
-    id: 3,
-    name: 'Whisper Lube Set',
-    price: '$39',
-    image: '/images/p14.jpeg',
-    badge: 'Editor’s Pick',
-    span: '',
+    nama: 'Paket Berdua',
+    harga: 'Rp 1.750.000',
+    tingkat: 'Lembut',
+    desc: 'Minyak pijat, pelumas, dan pembersih alat — cukup untuk memulai tanpa membeli terpisah.',
+    image: '/images/p8.jpg',
   },
-  {
-    id: 4,
-    name: 'Luxe Massage Oil',
-    price: '$59',
-    image: '/images/p15.jpeg',
-    badge: 'New Arrival',
-    span: 'col-span-2',
-  },
-
 ]
 
 export default function FeaturedProducts() {
   return (
-    <section className="px-6 md:px-12 py-24 max-w-7xl mx-auto">
-      {/* Section Heading */}
-      <div className="text-center mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold text-chalk dark:text-chalk"
-        >
-          Featured For Your Pleasure
-        </motion.h2>
-        <p className="mt-4 text-lg text-ash dark:text-ash max-w-2xl mx-auto">
-          Handpicked pleasures curated for deep connection and shared experiences.
-        </p>
-      </div>
+    <section id="produk" className="relative overflow-hidden bg-void-2 py-20 md:py-28">
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <div className="mb-12 max-w-xl">
+          <p className="micro mb-5 text-neon">Paling sering dipesan</p>
+          <h2 className="text-[2rem] leading-[1.1] md:text-[2.7rem]">Tiga yang paling aman dicoba lebih dulu</h2>
+        </div>
 
-      {/* Masonry-style Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[minmax(300px,_auto)] gap-8">
-        {featuredProducts.map((product, index) => (
-          <motion.div
-            key={product.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.15, duration: 0.6 }}
-            viewport={{ once: true }}
-            className={`relative bg-void-2 dark:bg-void-2 rounded-3xl overflow-hidden shadow-xl group hover:scale-[1.015] transition-transform duration-300 ${product.span}`}
-          >
-            <div className="relative w-full h-full min-h-[280px] overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-700"
-              />
-              <span className="absolute top-4 left-4 bg-neon text-chalk text-xs uppercase font-bold py-1 px-3 rounded-full shadow-sm">
-                {product.badge}
-              </span>
-              <button className="absolute top-4 right-4 p-2 bg-void-2/80 dark:bg-void-2/80 rounded-full hover:bg-void-2 dark:hover:bg-void-2 transition">
-                <Heart className="w-4 h-4 text-neon" />
-              </button>
-            </div>
-            <div className="p-6 space-y-2">
-              <h3 className="text-lg font-semibold text-chalk dark:text-chalk group-hover:text-neon transition">
-                {product.name}
-              </h3>
-              <div className="flex justify-between items-center">
-                <span className="text-neon font-bold text-sm">
-                  {product.price}
+        <div className="grid gap-6 md:grid-cols-3">
+          {produk.map((p) => (
+            <article key={p.nama} className="group flex flex-col border border-chalk/10 bg-void">
+              <div className="relative aspect-square overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.nama}
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <span className="micro absolute top-4 left-4 bg-void/85 px-3 py-1.5 text-neon backdrop-blur-sm">
+                  {p.tingkat}
                 </span>
-                <button className="group flex items-center text-sm text-ash dark:text-ash hover:text-neon transition">
-                  Explore
-                  <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </button>
               </div>
-            </div>
-          </motion.div>
-        ))}
+
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="text-lg font-bold text-chalk">{p.nama}</h3>
+                <p className="mt-2.5 flex-1 text-sm leading-relaxed text-ash">{p.desc}</p>
+
+                <div className="mt-6 flex items-center justify-between border-t border-chalk/10 pt-5">
+                  <span className="text-base font-bold text-chalk">{p.harga}</span>
+                  <Link href="/produk" className="micro text-neon transition-colors hover:text-chalk">
+                    Rincian
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p className="micro mt-8 leading-[1.7] text-ash/45">
+          Harga dan nama barang di atas adalah contoh untuk keperluan purwarupa desain.
+        </p>
       </div>
     </section>
   )

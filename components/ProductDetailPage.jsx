@@ -1,189 +1,94 @@
-'use client'
+import Link from 'next/link'
 
-import Image from 'next/image'
-import { useState } from 'react'
-import { Heart, Truck, Lock, CheckCircle, ArrowRight } from 'lucide-react'
-import { motion } from 'framer-motion'
+const spek = [
+  ['Material', 'Silikon medical-grade, bebas BPA'],
+  ['Ketahanan air', 'Tahan percik — tidak untuk direndam'],
+  ['Daya', 'Isi ulang USB-C, ±2 jam pemakaian'],
+  ['Kebisingan', 'Di bawah 45 dB pada mode terendah'],
+  ['Isi paket', 'Alat, kabel, kantong simpan, panduan'],
+  ['Garansi', '12 bulan untuk kerusakan bukan akibat salah pakai'],
+]
 
-const product = {
-  name: 'Pulse Vibe',
-  price: '$79',
-  images: ['/images/p2.jpg', '/images/p7.jpg', '/images/p8.jpg'],
-  description:
-    'Pulse Vibe is a luxurious app-controlled vibrator designed to elevate shared pleasure. Whether you’re near or far, stay connected through touch.',
-  features: [
-    'App-Controlled',
-    'Waterproof & Whisper-Quiet',
-    'Long-Distance Compatible',
-    'USB Rechargeable',
-    'Body-Safe Silicone',
-  ],
-  specifications: {
-    material: 'Medical Grade Silicone',
-    battery: 'USB Rechargeable (1.5h)',
-    waterproof: 'Yes',
-    noise: '< 40dB',
-  },
-  reviews: [
-    {
-      name: 'Alicia & Ben',
-      comment: 'Absolutely loved using it together — fun and intimate!',
-      rating: 5,
-    },
-  ],
-}
+const galeri = ['/images/p5.jpg', '/images/p9.jpeg', '/images/p10.jpeg']
 
-const tabs = ['Description', 'Specifications', 'Reviews']
-
-export default function ProductDetail() {
-  const [liked, setLiked] = useState(false)
-  const [activeTab, setActiveTab] = useState('Description')
-  const [selectedImage, setSelectedImage] = useState(product.images[0])
-
+export default function ProductDetailPage() {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="py-20 px-6 md:px-12 max-w-7xl mx-auto"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        {/* Image + Gallery */}
-        <div className="space-y-6">
-          <div className="relative w-full aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
-            <Image
-              src={selectedImage}
-              alt={product.name}
-              fill
-              className="object-cover object-center transition-all"
-              priority
-            />
-            <button
-              onClick={() => setLiked(!liked)}
-              className="absolute top-4 right-4 p-2 bg-void-2/80 dark:bg-void-2/80 rounded-full backdrop-blur-md hover:scale-110 transition"
-            >
-              <Heart
-                className={`w-5 h-5 ${
-                  liked ? 'text-neon fill-pink-600' : 'text-ash'
-                }`}
-              />
-            </button>
-          </div>
+    <section className="relative overflow-hidden bg-void pt-28 pb-20 md:pt-36 md:pb-28">
+      <div aria-hidden="true" className="dim-glow absolute inset-x-0 top-0 h-72" />
 
-          {/* Gallery thumbnails */}
-          <div className="flex gap-4">
-            {product.images.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedImage(img)}
-                className={`w-20 h-20 rounded-xl overflow-hidden border-2 ${
-                  selectedImage === img
-                    ? 'border-neon'
-                    : 'border-transparent'
-                }`}
-              >
-                <Image
-                  src={img}
-                  alt="thumbnail"
-                  width={80}
-                  height={80}
-                  className="object-cover w-full h-full"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <nav aria-label="Remah roti" className="micro mb-10 flex flex-wrap items-center gap-2 text-ash/55">
+          <Link href="/" className="transition-colors hover:text-neon">
+            Beranda
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-chalk">Pulse Duo</span>
+        </nav>
 
-        {/* Content */}
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-chalk dark:text-chalk leading-tight">
-            {product.name}
-          </h1>
-
-          <p className="text-2xl text-neon font-semibold tracking-wide">
-            {product.price}
-          </p>
-
-          <div className="flex flex-wrap gap-3 mt-4">
-            {product.features.map((feature, idx) => (
-              <span
-                key={idx}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm bg-neon/15/60 dark:bg-neon/50/30 text-neon dark:text-neon rounded-full font-medium backdrop-blur"
-              >
-                <CheckCircle className="w-4 h-4" />
-                {feature}
-              </span>
-            ))}
-          </div>
-
-          {/* Tabs */}
-          <div className="border-b border-chalk/12 dark:border-chalk/12 mt-10">
-            <div className="flex space-x-6">
-              {tabs.map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`pb-2 text-sm font-medium transition ${
-                    activeTab === tab
-                      ? 'text-neon border-b-2 border-neon'
-                      : 'text-ash hover:text-chalk dark:hover:text-chalk'
-                  }`}
-                >
-                  {tab}
-                </button>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+          <div>
+            <div className="relative aspect-square overflow-hidden border border-chalk/10 bg-void-2">
+              <img src={galeri[0]} alt="Pulse Duo" className="h-full w-full object-cover" />
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-4">
+              {galeri.map((g, i) => (
+                <div key={g} className="relative aspect-square overflow-hidden border border-chalk/10 bg-void-2">
+                  <img src={g} alt={`Pulse Duo tampilan ${i + 1}`} className="h-full w-full object-cover" />
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Tab Content */}
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-ash dark:text-ash pt-4"
-          >
-            {activeTab === 'Description' && (
-              <p className="text-base leading-relaxed">{product.description}</p>
-            )}
+          <div>
+            <p className="micro mb-4 text-neon">Tingkat sedang</p>
+            <h1 className="text-[2.2rem] leading-[1.06] md:text-[2.9rem]">Pulse Duo</h1>
 
-            {activeTab === 'Specifications' && (
-              <ul className="space-y-2 text-sm">
-                {Object.entries(product.specifications).map(([key, value]) => (
-                  <li key={key} className="flex justify-between">
-                    <span className="capitalize">{key}</span>
-                    <span className="font-semibold text-right">{value}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <p className="mt-5 leading-relaxed text-ash">
+              Dua motor terpisah yang bisa diatur sendiri-sendiri, dengan sepuluh pola getaran.
+              Dirancang untuk dipakai berdua dan dikendalikan bergantian — bukan alat yang menuntut
+              pengalaman lebih dulu.
+            </p>
 
-            {activeTab === 'Reviews' && (
-              <div className="space-y-4">
-                {product.reviews.map((review, idx) => (
-                  <div key={idx} className="bg-neon/10 dark:bg-void-2/40 p-4 rounded-lg">
-                    <p className="font-semibold text-neon dark:text-neon">
-                      {review.name}
-                    </p>
-                    <p className="text-sm mt-1">{review.comment}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </motion.div>
+            <p className="mt-8 text-2xl font-bold text-chalk">Rp 1.290.000</p>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-8">
-            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 bg-neon text-chalk rounded-full font-semibold shadow-lg hover:bg-neon transition">
-              Add to Cart
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 border border-neon text-neon rounded-full font-semibold hover:bg-neon/10 dark:hover:bg-void-2 transition">
-              Wishlist
-            </button>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Link
+                href="/checkout"
+                className="inline-flex flex-1 items-center justify-center bg-neon px-8 py-4 text-sm font-bold text-void transition-colors duration-300 hover:bg-chalk"
+              >
+                Pesan Sekarang
+              </Link>
+              <Link
+                href="/#kontak"
+                className="inline-flex items-center justify-center border border-chalk/25 px-8 py-4 text-sm font-bold text-chalk transition-colors duration-300 hover:border-chalk/60"
+              >
+                Tanya Dulu
+              </Link>
+            </div>
+
+            <div className="mt-8 flex items-center gap-3.5 border border-chalk/10 bg-void-2 px-5 py-4">
+              <span aria-hidden="true" className="h-8 w-8 shrink-0 bg-kraft" />
+              <p className="text-sm leading-relaxed text-chalk/85">
+                Dikirim dalam kotak cokelat polos. Nama merek tidak muncul di resi maupun mutasi
+                rekening.
+              </p>
+            </div>
+
+            <dl className="mt-10 divide-y divide-chalk/10 border-t border-chalk/10">
+              {spek.map(([k, v]) => (
+                <div key={k} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                  <dt className="micro text-ash/55">{k}</dt>
+                  <dd className="text-sm text-chalk sm:text-right">{v}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <p className="micro mt-8 leading-[1.7] text-ash/45">
+              Spesifikasi dan harga di atas adalah contoh untuk keperluan purwarupa desain.
+            </p>
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   )
 }

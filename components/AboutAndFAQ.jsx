@@ -1,104 +1,97 @@
 'use client'
 
 import { useState } from 'react'
-import { Minus, Plus } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Plus } from 'lucide-react'
 
-const faqs = [
+const tanya = [
   {
-    question: 'Apakah pengiriman bersifat rahasia?',
-    answer:
-      'Ya. Kami selalu mengirim dalam kemasan polos tanpa label produk. Tidak ada yang tahu isi paket Anda kecuali Anda.',
+    q: 'Apa yang tertulis di paket dan resi?',
+    a: 'Kotak cokelat polos tanpa cetakan apa pun. Di resi tertera nama pengirim "PT Sinar Kreasi Mandiri" dan keterangan isi "perlengkapan pribadi". Nama Positive Crave tidak muncul di mana pun, termasuk di mutasi rekening Anda.',
   },
   {
-    question: 'Bagaimana cara memilih produk yang cocok untuk pasangan kami?',
-    answer:
-      'Kami menyediakan panduan interaktif, kuis kecocokan, dan kurasi khusus seperti "For Couples", "Beginner Kits", dan lainnya.',
+    q: 'Apakah kurir tahu isinya?',
+    a: 'Tidak. Kurir hanya menerima data alamat dan keterangan isi umum yang sama seperti tertera di resi.',
   },
   {
-    question: 'Apakah produk aman digunakan?',
-    answer:
-      'Produk kami dibuat dari material medical-grade, hypoallergenic, dan bebas BPA. Kami hanya memilih merek terpercaya yang lolos uji kualitas.',
+    q: 'Bagaimana kalau saya belum pernah beli yang seperti ini?',
+    a: 'Mulai dari kategori "Baru pertama" — isinya barang paling sederhana tanpa banyak pengaturan. Atau tanyakan dulu lewat bantuan; kami sarankan satu titik mulai tanpa mendorong Anda membeli yang lebih mahal.',
   },
   {
-    question: 'Apakah tersedia opsi pembayaran aman?',
-    answer:
-      'Semua transaksi diamankan dengan SSL 256-bit. Kami mendukung kartu kredit, e-wallet, dan transfer bank dengan privasi penuh.',
+    q: 'Materialnya aman?',
+    a: 'Semua alat memakai silikon medical-grade yang tidak berpori dan bebas BPA. Tidak menyerap cairan, bisa dibersihkan menyeluruh, dan aman untuk kontak lama dengan kulit.',
+  },
+  {
+    q: 'Apa beda tahan percik dan tahan air?',
+    a: 'Tahan percik berarti boleh terkena air saat dibersihkan, tapi tidak untuk direndam. Tahan air penuh boleh direndam. Salah membaca keduanya adalah penyebab kerusakan yang paling sering kami terima.',
+  },
+  {
+    q: 'Kalau barangnya rusak?',
+    a: 'Ada masa garansi untuk kerusakan yang bukan akibat pemakaian keliru. Penggantian dikirim dalam kemasan polos yang sama.',
   },
 ]
 
 export default function AboutAndFAQ() {
-  const [openIndex, setOpenIndex] = useState(null)
-  const toggle = index => setOpenIndex(openIndex === index ? null : index)
+  const [open, setOpen] = useState(0)
 
   return (
-    <section className="max-w-6xl mx-auto px-6 md:px-12 py-24 space-y-28 text-chalk dark:text-chalk">
-      {/* About Section */}
-      <div className="grid md:grid-cols-2 items-center gap-14">
-        <div className="space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight text-chalk dark:text-chalk">
-            Redefining Intimacy with Elegance & Trust
+    <section id="tanya" className="relative overflow-hidden bg-void-2 py-20 md:py-28">
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="micro mb-5 text-neon">Tanya Jawab</p>
+          <h2 className="text-[2rem] leading-[1.1] md:text-[2.7rem]">
+            Pertanyaan yang biasanya ditahan dulu
           </h2>
-          <p className="text-lg leading-relaxed text-ash dark:text-ash">
-            Positive Crave exists to empower married couples through products
-            that inspire play, connection, and confidence — all with zero shame.
-            Our curated experiences are designed with sensuality, safety, and
-            sophistication in mind.
-          </p>
-          <ul className="space-y-3 text-base text-ash dark:text-ash">
-            <li>✓ Discreet global shipping</li>
-            <li>✓ Inclusive & body-positive experiences</li>
-            <li>✓ Curated for connection, not just pleasure</li>
-          </ul>
-        </div>
-
-        <div className="relative">
-          <img
-            src="/images/p16.jpeg"
-            alt="Couples intimacy"
-            className="rounded-3xl shadow-2xl border border-chalk/12 dark:border-chalk/12"
-          />
-          <div className="absolute -bottom-5 -left-5 bg-neon text-chalk px-5 py-2 text-sm rounded-full shadow-lg">
-            For All Kinds of Love
-          </div>
-        </div>
-      </div>
-
-      {/* FAQ Section */}
-      <div>
-        <div className="text-center mb-12">
-          <h3 className="text-3xl md:text-4xl font-bold text-chalk dark:text-chalk">
-            Frequently Asked Questions
-          </h3>
-          <p className="mt-3 text-ash dark:text-ash max-w-2xl mx-auto">
-            Jawaban atas pertanyaan yang paling sering ditanyakan pelanggan kami.
+          <p className="mt-5 leading-relaxed text-ash">
+            Enam hal yang paling sering ditanyakan sebelum orang memutuskan memesan — dijawab apa
+            adanya.
           </p>
         </div>
 
-        <div className="space-y-5 max-w-3xl mx-auto">
-          {faqs.map((faq, i) => (
-            <div
-              key={i}
-              className="border border-chalk/12 dark:border-chalk/12 rounded-xl bg-void-2 dark:bg-void-2/60 backdrop-blur-md overflow-hidden shadow-sm transition-all"
-            >
-              <button
-                onClick={() => toggle(i)}
-                className="flex w-full justify-between items-center px-6 py-5 text-left text-lg font-medium text-chalk dark:text-chalk hover:bg-neon/10 dark:hover:bg-void-2 transition"
-              >
-                <span>{faq.question}</span>
-                {openIndex === i ? (
-                  <Minus className="w-5 h-5 shrink-0 text-neon" />
-                ) : (
-                  <Plus className="w-5 h-5 shrink-0 text-neon" />
-                )}
-              </button>
-              {openIndex === i && (
-                <div className="px-6 pb-6 text-ash dark:text-ash leading-relaxed border-t border-chalk/12 dark:border-chalk/12">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        <dl className="border-t border-chalk/12">
+          {tanya.map((t, i) => {
+            const terbuka = open === i
+            return (
+              <div key={t.q} className="border-b border-chalk/12">
+                <dt>
+                  <button
+                    onClick={() => setOpen(terbuka ? null : i)}
+                    aria-expanded={terbuka}
+                    aria-controls={`n-jwb-${i}`}
+                    className="flex w-full items-start gap-5 py-6 text-left"
+                  >
+                    <span aria-hidden="true" className="micro mt-1.5 shrink-0 text-neon">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="flex-1 text-base font-bold text-chalk md:text-lg">{t.q}</span>
+                    <Plus
+                      size={18}
+                      strokeWidth={2}
+                      aria-hidden="true"
+                      className={`mt-1 shrink-0 text-chalk transition-transform duration-300 ${
+                        terbuka ? 'rotate-45' : ''
+                      }`}
+                    />
+                  </button>
+                </dt>
+                <AnimatePresence initial={false}>
+                  {terbuka && (
+                    <motion.dd
+                      id={`n-jwb-${i}`}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pb-7 pl-11 text-sm leading-relaxed text-ash">{t.a}</p>
+                    </motion.dd>
+                  )}
+                </AnimatePresence>
+              </div>
+            )
+          })}
+        </dl>
       </div>
     </section>
   )

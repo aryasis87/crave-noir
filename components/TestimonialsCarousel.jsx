@@ -1,120 +1,53 @@
-'use client'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import { useEffect } from 'react'
-
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-
-const testimonials = [
+const suara = [
   {
-    name: 'Alyssa & Ben',
-    text: 'We were hesitant at first, but Positive Crave made exploring our intimacy feel safe, fun, and even romantic.',
-    image: '/images/p9.jpeg',
+    kutipan:
+      'Yang bikin kami akhirnya jadi pesan itu bagian kemasannya. Sampai di rumah cuma kotak cokelat biasa — ibu saya kira paket alat dapur.',
+    nama: 'R. & A.',
+    ket: 'Bandung, pesanan pertama',
   },
   {
-    name: 'Nadia & Rizal',
-    text: 'The curated kits are amazing. It’s like a date night in a box. Subtle, elegant, and so much fun.',
-    image: '/images/p10.jpeg',
+    kutipan:
+      'Kami mulai dari yang paling sederhana sesuai saran di halaman ini, bukan dari yang paling mahal. Ternyata itu keputusan yang tepat.',
+    nama: 'D. & N.',
+    ket: 'Surabaya, pelanggan berulang',
   },
   {
-    name: 'Luna & Marek',
-    text: 'We live long-distance and the app-controlled toys brought us closer in ways we didn’t expect.',
-    image: '/images/p11.jpeg',
+    kutipan:
+      'Sempat salah paham soal tahan percik dan tahan air. Saya tanya lewat chat, dijawab orang beneran, dan tidak dijawab dengan tawaran barang lain.',
+    nama: 'S.',
+    ket: 'Jakarta',
   },
 ]
 
 export default function TestimonialsCarousel() {
-  useEffect(() => {
-    const swiperStyles = document.createElement('style')
-    swiperStyles.innerHTML = `
-      .swiper-button-disabled {
-        opacity: 0.3 !important;
-        pointer-events: none;
-      }
-    `
-    document.head.appendChild(swiperStyles)
-    return () => {
-      document.head.removeChild(swiperStyles)
-    }
-  }, [])
-
   return (
-    <section className="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-chalk dark:text-chalk">
-          Loved by Couples Everywhere
-        </h2>
-        <p className="text-ash dark:text-ash mt-2">
-          Real experiences from real relationships.
-        </p>
-      </div>
-
-      <div className="relative">
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={1}
-          loop
-          navigation={{
-            nextEl: '.swiper-next',
-            prevEl: '.swiper-prev',
-          }}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 7000, disableOnInteraction: false }}
-          modules={[Navigation, Pagination, Autoplay]}
-          className="w-full"
-        >
-          {testimonials.map((testimonial, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="bg-void-2 dark:bg-void-2 rounded-3xl shadow-xl px-8 py-12 md:p-16 max-w-3xl mx-auto text-center space-y-6">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="mx-auto w-16 h-16 rounded-full object-cover ring-2 ring-pink-500"
-                />
-                <p className="text-lg text-ash dark:text-ash italic">“{testimonial.text}”</p>
-                <h4 className="text-neon dark:text-neon font-semibold">{testimonial.name}</h4>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        {/* Custom Navigation */}
-        <div className="absolute inset-y-1/2 left-0 right-0 -translate-y-1/2 flex justify-between px-8 z-10 pointer-events-none">
-          <button
-            className="swiper-prev pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-void-2/40 dark:bg-void-2/30 backdrop-blur-md border border-chalk/25/50 dark:border-chalk/12 shadow-md hover:scale-105 hover:bg-void-2 dark:hover:bg-void-2 transition-all duration-300"
-            aria-label="Previous"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5 text-neon dark:text-neon"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            className="swiper-next pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-void-2/40 dark:bg-void-2/30 backdrop-blur-md border border-chalk/25/50 dark:border-chalk/12 shadow-md hover:scale-105 hover:bg-void-2 dark:hover:bg-void-2 transition-all duration-300"
-            aria-label="Next"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5 text-neon dark:text-neon"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+    <section id="suara" className="relative overflow-hidden bg-void py-20 md:py-28">
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <div className="mb-12 max-w-xl">
+          <p className="micro mb-5 text-neon">Catatan Pembeli</p>
+          <h2 className="text-[2rem] leading-[1.1] md:text-[2.7rem]">
+            Yang paling sering disebut bukan barangnya
+          </h2>
         </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {suara.map((s) => (
+            <figure key={s.nama} className="flex flex-col border border-chalk/10 bg-void-2 p-7">
+              <span aria-hidden="true" className="redact mb-6 block h-2.5 w-10 text-neon" />
+              <blockquote className="flex-1 text-[0.95rem] leading-relaxed text-chalk/90">
+                {s.kutipan}
+              </blockquote>
+              <figcaption className="mt-7 border-t border-chalk/10 pt-5">
+                <span className="block text-sm font-bold text-chalk">{s.nama}</span>
+                <span className="micro mt-1.5 block text-ash/55">{s.ket}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <p className="micro mt-8 leading-[1.7] text-ash/45">
+          Nama disingkat atas permintaan. Kutipan di atas adalah ilustrasi untuk purwarupa desain.
+        </p>
       </div>
     </section>
   )
