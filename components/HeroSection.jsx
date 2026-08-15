@@ -1,99 +1,86 @@
-'use client'
-
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { ArrowRight, ShieldCheck, Lock } from 'lucide-react'
+import Link from 'next/link'
+
+const jaminan = [
+  ['Kemasan', 'Polos, tanpa merek'],
+  ['Material', 'Medical-grade, bebas BPA'],
+  ['Dukungan', 'Dijawab manusia'],
+]
 
 export default function HeroSection() {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="relative overflow-hidden isolate py-24 px-6 md:px-12 bg-[#1A1314] text-white"
-    >
-      {/* Background Shape Accent */}
-      <div className="absolute -top-32 -left-40 w-[700px] h-[700px] bg-pink-800/30 rounded-full blur-3xl opacity-40 -z-10" />
+    <section className="relative overflow-hidden bg-void pt-28 pb-16 md:pt-36 md:pb-24">
+      <div aria-hidden="true" className="dim-glow absolute inset-x-0 top-0 h-[28rem]" />
 
-      {/* Optional Soft Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1A1314] via-[#1A1314]/60 to-pink-900/10 z-0" />
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-20">
+        <div>
+          <p className="micro mb-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-neon">
+            Positive Crave
+            <span aria-hidden="true" className="redact h-2.5 w-8 text-chalk/25" />
+            <span className="text-ash">Untuk pasangan</span>
+          </p>
 
-      <div className="relative z-10 flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20 max-w-7xl mx-auto">
-        {/* TEXT SECTION */}
-        <div className="flex-1 text-center md:text-left space-y-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white"
-          >
-            Explore Pleasure, <br className="hidden sm:block" /> Together.
-          </motion.h1>
+          <h1 className="text-[2.6rem] leading-[0.98] sm:text-6xl lg:text-[4.2rem]">
+            Explore Pleasure,
+            <br />
+            Together.
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg md:text-xl text-gray-300 max-w-xl mx-auto md:mx-0"
-          >
-            Tastefully designed intimacy essentials for couples seeking deeper connection, playful exploration, and elevated moments of love.
-          </motion.p>
+          <p className="mt-7 max-w-lg leading-relaxed text-ash">
+            Perlengkapan keintiman yang dipilih dengan selera — untuk pasangan yang ingin lebih
+            dekat, lebih berani mencoba, dan tetap merasa aman. Dikirim dalam kotak polos yang
+            tidak memberi tahu siapa pun apa isinya.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mt-8 flex justify-center md:justify-start gap-4"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="group relative px-6 py-3 bg-pink-600 text-white rounded-full font-semibold shadow-lg hover:bg-pink-700 transition-all"
-              aria-label="Explore products for couples"
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <Link
+              href="/#produk"
+              className="inline-flex items-center justify-center bg-neon px-8 py-4 text-sm font-bold text-void transition-colors duration-300 hover:bg-chalk"
             >
-              Explore Together
-              <ArrowRight className="inline ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="px-6 py-3 border-2 border-pink-600 text-pink-300 rounded-full hover:bg-pink-950 transition-all font-semibold"
+              Lihat Koleksi
+            </Link>
+            <Link
+              href="/#privasi"
+              className="inline-flex items-center justify-center border border-chalk/25 px-8 py-4 text-sm font-bold text-chalk transition-colors duration-300 hover:border-chalk/60"
             >
-              Learn More
-            </motion.button>
-          </motion.div>
-
-          {/* Trust badges */}
-          <div className="mt-6 flex justify-center md:justify-start gap-6 text-sm text-gray-400">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-pink-500" />
-              <span>Discreet Shipping</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Lock className="w-4 h-4 text-pink-500" />
-              <span>Secure Payment</span>
-            </div>
+              Bagaimana paketnya dikirim?
+            </Link>
           </div>
+
+          <dl className="mt-14 grid gap-7 border-t border-chalk/12 pt-8 sm:grid-cols-3">
+            {jaminan.map(([k, v]) => (
+              <div key={k}>
+                <dt className="micro text-ash/55">{k}</dt>
+                <dd className="mt-2.5 text-sm font-semibold text-chalk">{v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        {/* IMAGE SECTION */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="group relative flex-1 w-full h-[340px] md:h-[450px] lg:h-[520px] rounded-xl overflow-hidden shadow-2xl"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-pink-600/10 via-transparent to-transparent z-10" />
-          <Image
-            src="/images/p1.webp"
-            alt="Romantic couple"
-            fill
-            className="object-cover object-center rounded-xl group-hover:scale-105 transition-transform duration-700"
-            priority
-          />
-        </motion.div>
+        {/* Gambar produk, dengan pita sensor sebagai motif */}
+        <figure className="relative">
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-void-2">
+            <Image
+              src="/images/p1.webp"
+              alt="Produk pilihan Positive Crave"
+              fill
+              priority
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <figcaption className="absolute -bottom-5 left-5 flex items-center gap-3.5 bg-void px-5 py-4 sm:left-8">
+            <span aria-hidden="true" className="h-9 w-9 shrink-0 bg-kraft" />
+            <span>
+              <span className="micro block text-ash/55">Dikirim sebagai</span>
+              <span className="mt-1 block text-sm font-semibold text-chalk">
+                Kotak cokelat polos
+              </span>
+            </span>
+          </figcaption>
+        </figure>
       </div>
-    </motion.section>
+    </section>
   )
 }

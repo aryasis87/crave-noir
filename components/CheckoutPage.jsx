@@ -50,7 +50,7 @@ export default function CheckoutPage() {
 
   return (
     <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-chalk dark:text-chalk">
         Your Cart
       </h2>
 
@@ -60,7 +60,7 @@ export default function CheckoutPage() {
           {cart.map(item => (
             <div
               key={item.id}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-5 bg-white dark:bg-zinc-900 rounded-2xl shadow-md hover:shadow-lg transition-all"
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-5 bg-void-2 dark:bg-void-2 rounded-2xl shadow-md hover:shadow-lg transition-all"
             >
               <div className="relative w-full sm:w-28 h-48 sm:h-28 rounded-xl overflow-hidden">
                 <Image
@@ -73,18 +73,18 @@ export default function CheckoutPage() {
 
               <div className="flex-1 w-full">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+                  <h3 className="text-lg font-semibold text-chalk dark:text-chalk">
                     {item.name}
                   </h3>
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="text-gray-400 hover:text-red-500 transition"
+                    className="text-ash hover:text-red-500 transition"
                   >
                     <Trash2 size={18} />
                   </button>
                 </div>
 
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                <p className="text-sm text-ash dark:text-ash mt-1">
                   ${item.price} × {item.quantity}
                 </p>
 
@@ -92,19 +92,19 @@ export default function CheckoutPage() {
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => updateQuantity(item.id, 'decrease')}
-                      className="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 hover:bg-pink-500 hover:text-white transition"
+                      className="w-8 h-8 rounded-full bg-void-2 dark:bg-void-2 hover:bg-neon hover:text-chalk transition"
                     >
                       <Minus size={16} className="mx-auto" />
                     </button>
                     <span className="px-3 font-medium">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.id, 'increase')}
-                      className="w-8 h-8 rounded-full bg-gray-100 dark:bg-zinc-800 hover:bg-pink-500 hover:text-white transition"
+                      className="w-8 h-8 rounded-full bg-void-2 dark:bg-void-2 hover:bg-neon hover:text-chalk transition"
                     >
                       <Plus size={16} className="mx-auto" />
                     </button>
                   </div>
-                  <span className="text-pink-600 font-semibold text-lg">
+                  <span className="text-neon font-semibold text-lg">
                     ${item.price * item.quantity}
                   </span>
                 </div>
@@ -114,33 +114,33 @@ export default function CheckoutPage() {
         </div>
 
         {/* 💳 Order Summary */}
-        <div className="relative rounded-2xl p-6 bg-white dark:bg-zinc-900 shadow-lg border border-gray-100 dark:border-zinc-700">
-          <div className="absolute -top-4 left-4 text-xs text-pink-600 bg-pink-100 dark:bg-pink-800/30 px-3 py-1 rounded-full font-medium shadow">
+        <div className="relative rounded-2xl p-6 bg-void-2 dark:bg-void-2 shadow-lg border border-chalk/12 dark:border-chalk/12">
+          <div className="absolute -top-4 left-4 text-xs text-neon bg-neon/15 dark:bg-neon/70/30 px-3 py-1 rounded-full font-medium shadow">
             Summary
           </div>
 
           <div className="space-y-4 pt-6">
-            <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex justify-between text-sm text-ash dark:text-ash">
               <span>Subtotal</span>
               <span>${subtotal.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex justify-between text-sm text-ash dark:text-ash">
               <span>Shipping</span>
               <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
             </div>
-            <hr className="border-t border-gray-200 dark:border-zinc-700 my-4" />
-            <div className="flex justify-between text-lg font-semibold text-gray-900 dark:text-white">
+            <hr className="border-t border-chalk/12 dark:border-chalk/12 my-4" />
+            <div className="flex justify-between text-lg font-semibold text-chalk dark:text-chalk">
               <span>Total</span>
               <span>${total.toFixed(2)}</span>
             </div>
           </div>
 
-          <button className="mt-6 w-full py-3 rounded-lg bg-gradient-to-r from-pink-500 to-pink-600 hover:to-pink-700 text-white font-semibold shadow-lg transition-all text-center">
+          <button className="mt-6 w-full py-3 rounded-lg bg-gradient-to-r from-neon to-neon hover:to-pink-700 text-chalk font-semibold shadow-lg transition-all text-center">
             Proceed to Checkout
           </button>
 
-          <div className="mt-4 flex items-center text-xs text-gray-400 gap-2">
-            <ShieldCheck className="w-4 h-4 text-pink-500" />
+          <div className="mt-4 flex items-center text-xs text-ash gap-2">
+            <ShieldCheck className="w-4 h-4 text-neon" />
             <span>Secure & Discreet Billing</span>
           </div>
         </div>

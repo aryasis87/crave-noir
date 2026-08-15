@@ -1,38 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================================================
+   Positive Crave — Konsep "Noir"
+   Bahasa desain: TANPA LABEL
+   Nilai jual utama brief ini adalah kerahasiaan, jadi itu pula yang jadi
+   bahasa rupanya: bidang hitam pekat, blok sensor, dan warna kraft kotak
+   polos. Satu aksen merah muda neon dipakai sehemat mungkin supaya tetap
+   berani tanpa jatuh vulgar.
+   ========================================================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-void: #0c0a0b; /* hitam pekat — dasar halaman */
+  --color-void-2: #171314; /* bidang terangkat */
+  --color-ash: #8e8589; /* teks sekunder */
+  --color-chalk: #f4f1f2; /* teks utama */
+  --color-neon: #ff2d78; /* satu-satunya aksen */
+  --color-kraft: #b08968; /* cokelat kotak polos */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--color-void);
+  color: var(--color-ash);
 }
 
-/* Hide scrollbar but keep functionality */
-.scrollbar-hidden {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-.scrollbar-hidden::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  color: var(--color-chalk);
 }
 
-h1, h2, h3 { font-family: var(--font-display), system-ui, sans-serif; }
-body { font-family: var(--font-inter), system-ui, sans-serif; }
+/* --------------------------------------------------------------------------
+   1. Label mikro — kapital rapat, dipakai sebagai penanda bagian
+   -------------------------------------------------------------------------- */
+.micro {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   2. Blok sensor — motif khas varian ini
+   -------------------------------------------------------------------------- */
+.redact {
+  display: inline-block;
+  background: currentColor;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+/* --------------------------------------------------------------------------
+   3. Serat kraft — tekstur kertas kotak polos
+   -------------------------------------------------------------------------- */
+.kraft-grain {
+  background-image:
+    repeating-linear-gradient(90deg, rgb(0 0 0 / 0.05) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.04) 0 1px, transparent 1px 4px);
+}
+
+/* --------------------------------------------------------------------------
+   4. Cahaya redup — pengganti blur-blob, jauh lebih tipis
+   -------------------------------------------------------------------------- */
+.dim-glow {
+  background: radial-gradient(60% 60% at 50% 0%, rgb(255 45 120 / 0.13), transparent 70%);
+}
+
+/* --------------------------------------------------------------------------
+   5. Aksesibilitas
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 2px solid var(--color-neon);
+  outline-offset: 3px;
+}

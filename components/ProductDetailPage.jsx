@@ -60,11 +60,11 @@ export default function ProductDetail() {
             />
             <button
               onClick={() => setLiked(!liked)}
-              className="absolute top-4 right-4 p-2 bg-white/80 dark:bg-zinc-800/80 rounded-full backdrop-blur-md hover:scale-110 transition"
+              className="absolute top-4 right-4 p-2 bg-void-2/80 dark:bg-void-2/80 rounded-full backdrop-blur-md hover:scale-110 transition"
             >
               <Heart
                 className={`w-5 h-5 ${
-                  liked ? 'text-pink-600 fill-pink-600' : 'text-gray-600'
+                  liked ? 'text-neon fill-pink-600' : 'text-ash'
                 }`}
               />
             </button>
@@ -78,7 +78,7 @@ export default function ProductDetail() {
                 onClick={() => setSelectedImage(img)}
                 className={`w-20 h-20 rounded-xl overflow-hidden border-2 ${
                   selectedImage === img
-                    ? 'border-pink-500'
+                    ? 'border-neon'
                     : 'border-transparent'
                 }`}
               >
@@ -96,11 +96,11 @@ export default function ProductDetail() {
 
         {/* Content */}
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-chalk dark:text-chalk leading-tight">
             {product.name}
           </h1>
 
-          <p className="text-2xl text-pink-600 font-semibold tracking-wide">
+          <p className="text-2xl text-neon font-semibold tracking-wide">
             {product.price}
           </p>
 
@@ -108,7 +108,7 @@ export default function ProductDetail() {
             {product.features.map((feature, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm bg-pink-100/60 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full font-medium backdrop-blur"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm bg-neon/15/60 dark:bg-neon/50/30 text-neon dark:text-neon rounded-full font-medium backdrop-blur"
               >
                 <CheckCircle className="w-4 h-4" />
                 {feature}
@@ -117,7 +117,7 @@ export default function ProductDetail() {
           </div>
 
           {/* Tabs */}
-          <div className="border-b border-gray-200 dark:border-zinc-700 mt-10">
+          <div className="border-b border-chalk/12 dark:border-chalk/12 mt-10">
             <div className="flex space-x-6">
               {tabs.map(tab => (
                 <button
@@ -125,8 +125,8 @@ export default function ProductDetail() {
                   onClick={() => setActiveTab(tab)}
                   className={`pb-2 text-sm font-medium transition ${
                     activeTab === tab
-                      ? 'text-pink-600 border-b-2 border-pink-600'
-                      : 'text-gray-500 hover:text-gray-800 dark:hover:text-white'
+                      ? 'text-neon border-b-2 border-neon'
+                      : 'text-ash hover:text-chalk dark:hover:text-chalk'
                   }`}
                 >
                   {tab}
@@ -141,7 +141,7 @@ export default function ProductDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="text-gray-600 dark:text-gray-300 pt-4"
+            className="text-ash dark:text-ash pt-4"
           >
             {activeTab === 'Description' && (
               <p className="text-base leading-relaxed">{product.description}</p>
@@ -161,8 +161,8 @@ export default function ProductDetail() {
             {activeTab === 'Reviews' && (
               <div className="space-y-4">
                 {product.reviews.map((review, idx) => (
-                  <div key={idx} className="bg-pink-50 dark:bg-zinc-800/40 p-4 rounded-lg">
-                    <p className="font-semibold text-pink-700 dark:text-pink-300">
+                  <div key={idx} className="bg-neon/10 dark:bg-void-2/40 p-4 rounded-lg">
+                    <p className="font-semibold text-neon dark:text-neon">
                       {review.name}
                     </p>
                     <p className="text-sm mt-1">{review.comment}</p>
@@ -174,11 +174,11 @@ export default function ProductDetail() {
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 pt-8">
-            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 bg-pink-600 text-white rounded-full font-semibold shadow-lg hover:bg-pink-700 transition">
+            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 bg-neon text-chalk rounded-full font-semibold shadow-lg hover:bg-neon transition">
               Add to Cart
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 border border-pink-600 text-pink-600 rounded-full font-semibold hover:bg-pink-50 dark:hover:bg-pink-950 transition">
+            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 border border-neon text-neon rounded-full font-semibold hover:bg-neon/10 dark:hover:bg-void-2 transition">
               Wishlist
             </button>
           </div>

@@ -49,11 +49,11 @@ export default function FeaturedProducts() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white"
+          className="text-4xl md:text-5xl font-extrabold text-chalk dark:text-chalk"
         >
           Featured For Your Pleasure
         </motion.h2>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p className="mt-4 text-lg text-ash dark:text-ash max-w-2xl mx-auto">
           Handpicked pleasures curated for deep connection and shared experiences.
         </p>
       </div>
@@ -67,7 +67,7 @@ export default function FeaturedProducts() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15, duration: 0.6 }}
             viewport={{ once: true }}
-            className={`relative bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden shadow-xl group hover:scale-[1.015] transition-transform duration-300 ${product.span}`}
+            className={`relative bg-void-2 dark:bg-void-2 rounded-3xl overflow-hidden shadow-xl group hover:scale-[1.015] transition-transform duration-300 ${product.span}`}
           >
             <div className="relative w-full h-full min-h-[280px] overflow-hidden">
               <img
@@ -75,22 +75,22 @@ export default function FeaturedProducts() {
                 alt={product.name}
                 className="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-700"
               />
-              <span className="absolute top-4 left-4 bg-pink-600 text-white text-xs uppercase font-bold py-1 px-3 rounded-full shadow-sm">
+              <span className="absolute top-4 left-4 bg-neon text-chalk text-xs uppercase font-bold py-1 px-3 rounded-full shadow-sm">
                 {product.badge}
               </span>
-              <button className="absolute top-4 right-4 p-2 bg-white/80 dark:bg-zinc-800/80 rounded-full hover:bg-white dark:hover:bg-zinc-700 transition">
-                <Heart className="w-4 h-4 text-pink-500" />
+              <button className="absolute top-4 right-4 p-2 bg-void-2/80 dark:bg-void-2/80 rounded-full hover:bg-void-2 dark:hover:bg-void-2 transition">
+                <Heart className="w-4 h-4 text-neon" />
               </button>
             </div>
             <div className="p-6 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-pink-600 transition">
+              <h3 className="text-lg font-semibold text-chalk dark:text-chalk group-hover:text-neon transition">
                 {product.name}
               </h3>
               <div className="flex justify-between items-center">
-                <span className="text-pink-600 font-bold text-sm">
+                <span className="text-neon font-bold text-sm">
                   {product.price}
                 </span>
-                <button className="group flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-pink-600 transition">
+                <button className="group flex items-center text-sm text-ash dark:text-ash hover:text-neon transition">
                   Explore
                   <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>

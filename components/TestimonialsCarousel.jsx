@@ -44,10 +44,10 @@ export default function TestimonialsCarousel() {
   return (
     <section className="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-3xl md:text-4xl font-bold text-chalk dark:text-chalk">
           Loved by Couples Everywhere
         </h2>
-        <p className="text-gray-500 dark:text-gray-400 mt-2">
+        <p className="text-ash dark:text-ash mt-2">
           Real experiences from real relationships.
         </p>
       </div>
@@ -68,14 +68,14 @@ export default function TestimonialsCarousel() {
         >
           {testimonials.map((testimonial, idx) => (
             <SwiperSlide key={idx}>
-              <div className="bg-white dark:bg-zinc-900 rounded-3xl shadow-xl px-8 py-12 md:p-16 max-w-3xl mx-auto text-center space-y-6">
+              <div className="bg-void-2 dark:bg-void-2 rounded-3xl shadow-xl px-8 py-12 md:p-16 max-w-3xl mx-auto text-center space-y-6">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
                   className="mx-auto w-16 h-16 rounded-full object-cover ring-2 ring-pink-500"
                 />
-                <p className="text-lg text-gray-700 dark:text-gray-300 italic">“{testimonial.text}”</p>
-                <h4 className="text-pink-600 dark:text-pink-300 font-semibold">{testimonial.name}</h4>
+                <p className="text-lg text-ash dark:text-ash italic">“{testimonial.text}”</p>
+                <h4 className="text-neon dark:text-neon font-semibold">{testimonial.name}</h4>
               </div>
             </SwiperSlide>
           ))}
@@ -84,12 +84,12 @@ export default function TestimonialsCarousel() {
         {/* Custom Navigation */}
         <div className="absolute inset-y-1/2 left-0 right-0 -translate-y-1/2 flex justify-between px-8 z-10 pointer-events-none">
           <button
-            className="swiper-prev pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-white/40 dark:bg-zinc-800/30 backdrop-blur-md border border-white/50 dark:border-zinc-700 shadow-md hover:scale-105 hover:bg-white dark:hover:bg-zinc-700 transition-all duration-300"
+            className="swiper-prev pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-void-2/40 dark:bg-void-2/30 backdrop-blur-md border border-chalk/25/50 dark:border-chalk/12 shadow-md hover:scale-105 hover:bg-void-2 dark:hover:bg-void-2 transition-all duration-300"
             aria-label="Previous"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5 text-pink-600 dark:text-pink-300"
+              className="w-5 h-5 text-neon dark:text-neon"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -100,12 +100,12 @@ export default function TestimonialsCarousel() {
           </button>
 
           <button
-            className="swiper-next pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-white/40 dark:bg-zinc-800/30 backdrop-blur-md border border-white/50 dark:border-zinc-700 shadow-md hover:scale-105 hover:bg-white dark:hover:bg-zinc-700 transition-all duration-300"
+            className="swiper-next pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-void-2/40 dark:bg-void-2/30 backdrop-blur-md border border-chalk/25/50 dark:border-chalk/12 shadow-md hover:scale-105 hover:bg-void-2 dark:hover:bg-void-2 transition-all duration-300"
             aria-label="Next"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5 text-pink-600 dark:text-pink-300"
+              className="w-5 h-5 text-neon dark:text-neon"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

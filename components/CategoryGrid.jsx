@@ -38,10 +38,10 @@ export default function CategoryGrid() {
       {/* Heading & Sort */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12 gap-4">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-bold text-chalk dark:text-chalk">
             Products Made for Connection
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
+          <p className="text-ash dark:text-ash mt-2">
             Curated categories for couples, tech lovers, and beginners.
           </p>
         </div>
@@ -49,10 +49,10 @@ export default function CategoryGrid() {
         {/* Custom Sort Dropdown */}
         <Listbox value={selectedSort} onChange={setSelectedSort}>
           <div className="relative w-64">
-            <Listbox.Button className="w-full cursor-pointer rounded-md border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-2 pl-4 pr-10 text-left shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 hover:border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
+            <Listbox.Button className="w-full cursor-pointer rounded-md border border-chalk/12 dark:border-chalk/12 bg-void-2 dark:bg-void-2 py-2 pl-4 pr-10 text-left shadow-sm text-sm font-medium text-ash dark:text-chalk hover:border-neon focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
               <span>{selectedSort}</span>
               <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                <ChevronDown className="w-4 h-4 text-gray-500" />
+                <ChevronDown className="w-4 h-4 text-ash" />
               </span>
             </Listbox.Button>
 
@@ -62,7 +62,7 @@ export default function CategoryGrid() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 -translate-y-1"
             >
-              <Listbox.Options className="absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-zinc-800 py-1 text-sm shadow-lg ring-1 ring-black/10 focus:outline-none">
+              <Listbox.Options className="absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-md bg-void-2 dark:bg-void-2 py-1 text-sm shadow-lg ring-1 ring-black/10 focus:outline-none">
                 {sortOptions.map(option => (
                   <Listbox.Option
                     key={option}
@@ -70,15 +70,15 @@ export default function CategoryGrid() {
                     className={({ active }) =>
                       `cursor-pointer select-none px-4 py-2 ${
                         active
-                          ? 'bg-pink-50 dark:bg-pink-900/40 text-pink-700 dark:text-pink-300'
-                          : 'text-gray-700 dark:text-gray-200'
+                          ? 'bg-neon/10 dark:bg-neon/50/40 text-neon dark:text-neon'
+                          : 'text-ash dark:text-chalk'
                       }`
                     }
                   >
                     {({ selected }) => (
                       <span className="flex items-center justify-between">
                         {option}
-                        {selected && <Check className="ml-2 w-4 h-4 text-pink-500" />}
+                        {selected && <Check className="ml-2 w-4 h-4 text-neon" />}
                       </span>
                     )}
                   </Listbox.Option>
@@ -94,7 +94,7 @@ export default function CategoryGrid() {
         {[...categories, ...features].map((item, idx) => (
           <button
             key={idx}
-            className="whitespace-nowrap px-4 py-2 rounded-full border border-gray-300 dark:border-zinc-700 text-sm text-gray-700 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20 transition"
+            className="whitespace-nowrap px-4 py-2 rounded-full border border-chalk/12 dark:border-chalk/12 text-sm text-ash dark:text-ash hover:bg-neon/10 dark:hover:bg-neon/50/20 transition"
           >
             {item}
           </button>
@@ -106,7 +106,7 @@ export default function CategoryGrid() {
         {products.map(product => (
           <div
             key={product.id}
-            className="group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+            className="group bg-void-2 dark:bg-void-2 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
           >
             <div className="relative w-full h-72 overflow-hidden">
               <img
@@ -114,19 +114,19 @@ export default function CategoryGrid() {
                 alt={product.name}
                 className="w-full h-full object-cover object-center group-hover:brightness-90 transition duration-300"
               />
-              <button className="absolute top-3 right-3 p-2 bg-white/80 dark:bg-zinc-800/70 rounded-full backdrop-blur-md hover:bg-white dark:hover:bg-zinc-700 transition">
-                <Heart className="w-4 h-4 text-pink-500" />
+              <button className="absolute top-3 right-3 p-2 bg-void-2/80 dark:bg-void-2/70 rounded-full backdrop-blur-md hover:bg-void-2 dark:hover:bg-void-2 transition">
+                <Heart className="w-4 h-4 text-neon" />
               </button>
             </div>
             <div className="p-5 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-pink-600 transition">
+              <h3 className="text-lg font-semibold text-chalk dark:text-chalk group-hover:text-neon transition">
                 {product.name}
               </h3>
               <div className="flex items-center justify-between pt-2">
-                <span className="inline-block bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300 px-3 py-1 text-sm rounded-full font-semibold">
+                <span className="inline-block bg-neon/15 text-neon dark:bg-neon/50/30 dark:text-neon px-3 py-1 text-sm rounded-full font-semibold">
                   {product.price}
                 </span>
-                <button className="group inline-flex items-center text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-pink-600 transition">
+                <button className="group inline-flex items-center text-sm font-medium text-ash dark:text-ash hover:text-neon transition">
                   See Details
                   <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>

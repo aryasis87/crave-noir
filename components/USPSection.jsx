@@ -36,18 +36,18 @@ const usps = [
 
 export default function USPSection() {
   return (
-    <section className="relative isolate overflow-hidden py-24 px-6 md:px-12 bg-[#FFF8F9] dark:bg-zinc-950">
+    <section className="relative isolate overflow-hidden py-24 px-6 md:px-12 bg-[#FFF8F9] dark:bg-void">
       {/* Decorative Blurred Circles */}
-      <div className="absolute -top-32 left-0 w-[600px] h-[600px] bg-pink-200/20 dark:bg-pink-900/10 rounded-full blur-3xl opacity-40 -z-10" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-pink-100/30 dark:bg-pink-900/10 rounded-full blur-2xl opacity-40 -z-10" />
+      <div className="absolute -top-32 left-0 w-[600px] h-[600px] bg-neon/25/20 dark:bg-neon/50/10 rounded-full blur-3xl opacity-40 -z-10" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-neon/15/30 dark:bg-neon/50/10 rounded-full blur-2xl opacity-40 -z-10" />
 
       {/* Content */}
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-chalk dark:text-chalk leading-tight">
             Why Couples Trust Positive Crave
           </h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+          <p className="mt-4 text-lg text-ash dark:text-ash">
             Designed for connection, built on trust. Experience intimacy redefined.
           </p>
         </div>
@@ -56,22 +56,22 @@ export default function USPSection() {
           {usps.map((usp, index) => (
             <div
               key={index}
-              className="group relative rounded-3xl p-6 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all border border-pink-100 dark:border-zinc-800"
+              className="group relative rounded-3xl p-6 bg-void-2/70 dark:bg-void-2/70 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all border border-neon/25 dark:border-chalk/12"
             >
               <div className="mb-5">
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-pink-100 dark:bg-pink-900/30">
-                  <usp.icon className="w-6 h-6 text-pink-600 dark:text-pink-400" />
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-neon/15 dark:bg-neon/50/30">
+                  <usp.icon className="w-6 h-6 text-neon dark:text-neon" />
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-pink-600 transition">
+              <h3 className="text-lg font-semibold text-chalk dark:text-chalk mb-2 group-hover:text-neon transition">
                 {usp.title}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-sm text-ash dark:text-ash leading-relaxed">
                 {usp.description}
               </p>
 
               {/* Decorative Glow on hover */}
-              <div className="absolute -inset-1 rounded-3xl bg-pink-400/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-300" />
+              <div className="absolute -inset-1 rounded-3xl bg-neon/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-300" />
             </div>
           ))}
         </div>
