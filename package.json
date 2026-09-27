@@ -6,16 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.4",
     "framer-motion": "^12.18.1",
     "lucide-react": "^0.519.0",
-    "next": "^15.5.20",
+    "next": "^15.5.26",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "swiper": "^11.2.8"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -23,7 +21,10 @@
     "@types/node": "20.17.6",
     "@types/react": "19.2.17",
     "eslint": "^9",
-    "eslint-config-next": "15.3.4",
+    "eslint-config-next": "^15.5.26",
     "tailwindcss": "^4"
+  },
+  "overrides": {
+    "postcss": "^8.5.28"
   }
 }
