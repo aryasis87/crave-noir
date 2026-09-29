@@ -6,10 +6,10 @@ import USPSection from '@/components/USPSection'
 import TestimonialsCarousel from '@/components/TestimonialsCarousel'
 import AboutAndFAQ from '@/components/AboutAndFAQ'
 import ContactSupport from '@/components/ContactSupport'
+import ArsipTeaser from '@/components/ArsipTeaser'
 
-/* Landing page hanya memuat bagian yang memang milik landing page.
-   ProductDetail, Checkout, dan Login sebelumnya ikut dirender di sini —
-   sekarang masing-masing punya rutenya sendiri (/produk, /checkout, /masuk). */
+/* Beranda Noir. Katalog lengkap ada di /koleksi, detail di /produk/[slug],
+   perjalanan paket di /pengiriman, dan tulisan di /jurnal (Arsip). */
 export default function Home() {
   return (
     <>
@@ -18,6 +18,7 @@ export default function Home() {
       <CategoryGrid />
       <FeaturedProducts />
       <USPSection />
+      <ArsipTeaser />
       <TestimonialsCarousel />
       <AboutAndFAQ />
       <ContactSupport />

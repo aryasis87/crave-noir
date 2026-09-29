@@ -4,15 +4,16 @@ const kolom = [
   {
     judul: 'Jelajahi',
     tautan: [
-      { label: 'Koleksi', href: '/#produk' },
-      { label: 'Kategori', href: '/#kategori' },
-      { label: 'Produk Pilihan', href: '/produk' },
+      { label: 'Koleksi', href: '/koleksi' },
+      { label: 'Untuk berdua', href: '/koleksi#berdua' },
+      { label: 'Baru pertama', href: '/koleksi#pertama' },
+      { label: 'Arsip', href: '/jurnal' },
     ],
   },
   {
     judul: 'Ketenangan',
     tautan: [
-      { label: 'Cara Paket Dikirim', href: '/#privasi' },
+      { label: 'Perjalanan Paket', href: '/pengiriman' },
       { label: 'Jaminan Mutu', href: '/#jaminan' },
       { label: 'Tanya Jawab', href: '/#tanya' },
     ],
@@ -46,7 +47,7 @@ export default function Footer() {
               memberi tahu siapa pun.
             </p>
 
-            <p className="micro mt-8 flex items-center gap-3 text-ash/50">
+            <p className="micro mt-8 flex items-center gap-3 text-ash">
               Dikirim sebagai
               <span aria-hidden="true" className="h-3.5 w-8 bg-kraft" />
               kotak polos
@@ -70,8 +71,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-chalk/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="micro text-ash/45">© {tahun} Positive Crave</p>
-          <p className="micro text-ash/45">Khusus dewasa 18+</p>
+          <p className="micro text-ash">© {tahun} Positive Crave</p>
+          <p className="micro text-ash">Khusus dewasa 18+</p>
         </div>
       </div>
     </footer>

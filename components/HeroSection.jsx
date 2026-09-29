@@ -34,13 +34,13 @@ export default function HeroSection() {
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <Link
-              href="/#produk"
+              href="/koleksi"
               className="inline-flex items-center justify-center bg-neon px-8 py-4 text-sm font-bold text-void transition-colors duration-300 hover:bg-chalk"
             >
               Lihat Koleksi
             </Link>
             <Link
-              href="/#privasi"
+              href="/pengiriman"
               className="inline-flex items-center justify-center border border-chalk/25 px-8 py-4 text-sm font-bold text-chalk transition-colors duration-300 hover:border-chalk/60"
             >
               Bagaimana paketnya dikirim?
@@ -50,7 +50,7 @@ export default function HeroSection() {
           <dl className="mt-14 grid gap-7 border-t border-chalk/12 pt-8 sm:grid-cols-3">
             {jaminan.map(([k, v]) => (
               <div key={k}>
-                <dt className="micro text-ash/55">{k}</dt>
+                <dt className="micro text-ash">{k}</dt>
                 <dd className="mt-2.5 text-sm font-semibold text-chalk">{v}</dd>
               </div>
             ))}
@@ -73,7 +73,7 @@ export default function HeroSection() {
           <figcaption className="absolute -bottom-5 left-5 flex items-center gap-3.5 bg-void px-5 py-4 sm:left-8">
             <span aria-hidden="true" className="h-9 w-9 shrink-0 bg-kraft" />
             <span>
-              <span className="micro block text-ash/55">Dikirim sebagai</span>
+              <span className="micro block text-ash">Dikirim sebagai</span>
               <span className="mt-1 block text-sm font-semibold text-chalk">
                 Kotak cokelat polos
               </span>

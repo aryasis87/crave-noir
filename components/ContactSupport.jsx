@@ -38,7 +38,7 @@ export default function ContactSupport() {
             </p>
 
             <Link
-              href="/produk"
+              href="/koleksi"
               className="mt-9 inline-flex items-center justify-center bg-neon px-8 py-4 text-sm font-bold text-void transition-colors duration-300 hover:bg-chalk"
             >
               Lihat Koleksi
@@ -48,7 +48,7 @@ export default function ContactSupport() {
           <dl className="divide-y divide-chalk/10 border-y border-chalk/10">
             {saluran.map((s) => (
               <div key={s.label} className="py-6">
-                <dt className="micro text-ash/55">{s.label}</dt>
+                <dt className="micro text-ash">{s.label}</dt>
                 <dd className="mt-2 text-base font-bold text-chalk">
                   {s.href ? (
                     <a href={s.href} className="break-all transition-colors hover:text-neon">

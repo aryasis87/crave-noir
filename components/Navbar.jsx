@@ -7,12 +7,14 @@ import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV = [
-  { label: 'Koleksi', href: '/#produk' },
-  { label: 'Privasi', href: '/#privasi' },
-  { label: 'Jaminan', href: '/#jaminan' },
+  { label: 'Koleksi', href: '/koleksi' },
+  { label: 'Pengiriman', href: '/pengiriman' },
+  { label: 'Arsip', href: '/jurnal' },
   { label: 'Tanya Jawab', href: '/#tanya' },
   { label: 'Bantuan', href: '/#kontak' },
 ]
+
+const aktif = (pathname, href) => !href.startsWith('/#') && (pathname === href || pathname.startsWith(href + '/'))
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -55,7 +57,12 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Navigasi utama">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="micro text-ash transition-colors hover:text-chalk">
+            <Link
+              key={n.href}
+              href={n.href}
+              aria-current={aktif(pathname, n.href) ? 'page' : undefined}
+              className={`micro transition-colors hover:text-chalk ${aktif(pathname, n.href) ? 'text-neon' : 'text-ash'}`}
+            >
               {n.label}
             </Link>
           ))}
@@ -98,7 +105,7 @@ export default function Navbar() {
               aria-label="Menu navigasi"
             >
               <div className="flex items-center justify-between border-b border-chalk/10 px-6 py-4">
-                <span className="micro text-ash/60">Menu</span>
+                <span className="micro text-ash">Menu</span>
                 <button onClick={() => setOpen(false)} className="-mr-2 p-2 text-chalk" aria-label="Tutup menu">
                   <X size={20} strokeWidth={2} />
                 </button>

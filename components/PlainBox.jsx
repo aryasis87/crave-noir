@@ -45,7 +45,7 @@ export default function PlainBox() {
           <figure className="overflow-hidden border border-chalk/10 bg-void-2">
             <figcaption className="flex items-center justify-between border-b border-chalk/10 px-6 py-4">
               <span className="micro text-ash">Yang dilihat orang lain</span>
-              <span className="micro text-ash/50">Resi &amp; kemasan</span>
+              <span className="micro text-ash">Resi &amp; kemasan</span>
             </figcaption>
 
             {/* Kotak kraft */}
@@ -63,7 +63,7 @@ export default function PlainBox() {
                   <span aria-hidden="true" className="redact mt-2 block h-2 w-full text-void/25" />
                   <span aria-hidden="true" className="redact mt-1.5 block h-2 w-4/5 text-void/25" />
                   <span aria-hidden="true" className="redact mt-1.5 block h-2 w-2/3 text-void/25" />
-                  <p className="mt-3 border-t border-void/15 pt-2 text-[0.6rem] font-bold tracking-widest text-void/50 uppercase">
+                  <p className="mt-3 border-t border-void/15 pt-2 text-[0.6rem] font-bold tracking-widest text-void/70 uppercase">
                     Isi: perlengkapan pribadi
                   </p>
                 </div>
@@ -72,7 +72,7 @@ export default function PlainBox() {
               <dl className="mt-8 divide-y divide-chalk/10 border-t border-chalk/10">
                 {surat.map(([k, v]) => (
                   <div key={k} className="flex items-baseline justify-between gap-4 py-3">
-                    <dt className="micro text-ash/60">{k}</dt>
+                    <dt className="micro text-ash">{k}</dt>
                     <dd className="text-sm font-semibold text-chalk">{v}</dd>
                   </div>
                 ))}
@@ -101,12 +101,14 @@ export default function PlainBox() {
                 Kalau masih ada yang mengganjal soal pengiriman, tanyakan lebih dulu — kami jawab
                 sebelum Anda memesan.
               </p>
-              <Link
-                href="/#kontak"
-                className="micro mt-5 inline-block border-b border-neon/50 pb-1 text-neon transition-colors hover:border-neon"
-              >
-                Tanya soal pengiriman
-              </Link>
+              <div className="mt-5 flex flex-wrap gap-x-8 gap-y-3">
+                <Link href="/pengiriman" className="micro inline-block border-b border-neon/50 pb-1 text-neon transition-colors hover:border-neon">
+                  Lihat perjalanan paketnya
+                </Link>
+                <Link href="/#kontak" className="micro inline-block border-b border-chalk/25 pb-1 text-ash transition-colors hover:text-chalk">
+                  Tanya soal pengiriman
+                </Link>
+              </div>
             </div>
           </div>
         </div>

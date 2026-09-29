@@ -72,7 +72,33 @@ h3 {
 }
 
 /* --------------------------------------------------------------------------
-   5. Aksesibilitas
+   5. Duotone hitam–neon — foto tampil seperti cetakan satu warna; warna asli
+      muncul saat kartu disorot. Membedakan Noir dari varian lain yang
+      memakai foto yang sama.
+   -------------------------------------------------------------------------- */
+.duo { position: relative; background-color: var(--color-void); }
+.duo img {
+  filter: grayscale(1) contrast(1.08) brightness(0.9);
+  transition: filter 0.5s ease, transform 0.7s ease;
+}
+.duo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--color-neon);
+  mix-blend-mode: color;
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.group:hover .duo img,
+.group:focus-within .duo img { filter: none; }
+.group:hover .duo::after,
+.group:focus-within .duo::after { opacity: 0; }
+
+/* --------------------------------------------------------------------------
+   6. Aksesibilitas
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,
