@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PRODUK, SITUASI } from '@/lib/katalog'
 
 const FOTO = {
-  berdua: '/images/p13.jpeg',
+  berdua: '/images/kategori-berdua.webp',
   pertama: '/images/p2.jpg',
   jarak: '/images/p8.jpg',
   perawatan: '/images/p14.jpeg',

@@ -34,6 +34,15 @@ npm run dev
 
 Buka http://localhost:3000. Untuk build produksi: `npm run build` lalu `npm start`.
 
+## Kredit foto
+
+Foto hero berlisensi **CC0 (domain publik)**: bebas dipakai, termasuk untuk komersial, tanpa wajib atribusi. Asalnya tetap dicatat di sini supaya jelas.
+
+- `public/images/hero.webp` — "Couple Love" oleh Morgan Sessions, StockSnap, CC0 ([sumber](https://stocksnap.io/photo/couple-love-AAM8X0DRXY)). Dipotong ke 4:5.
+- `public/images/kategori-berdua.webp` — "Free couple holding hand image", rawpixel, CC0 ([sumber](https://www.rawpixel.com/image/5927571/photo-image-public-domain-hands-women)). Dipotong ke 4:5.
+- `public/images/minyak-pijat.webp` — ilustrasi buatan sendiri untuk purwarupa ini.
+- Foto produk lainnya (`p2`–`p8`, `p14`) belum terverifikasi asal-usulnya. Ganti dengan foto produk asli klien sebelum situs dipakai sungguhan.
+
 ---
 
 Bagian dari koleksi 9 entri kontes desain web di [PortalKontes](https://portal-kontes.vercel.app). Dibuat oleh [PintuWeb](https://pintuweb.com), jasa pembuatan website.

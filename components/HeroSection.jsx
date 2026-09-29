@@ -61,8 +61,8 @@ export default function HeroSection() {
         <figure className="relative">
           <div className="relative aspect-[4/5] w-full overflow-hidden bg-void-2">
             <Image
-              src="/images/p1.webp"
-              alt="Produk pilihan Positive Crave"
+              src="/images/hero.webp"
+              alt="Dua orang berbagi payung bening di tengah hujan, wajah tersamar titik air"
               fill
               priority
               sizes="(min-width: 1024px) 45vw, 100vw"
