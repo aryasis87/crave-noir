@@ -52,6 +52,7 @@ export default function KoleksiPage() {
         </div>
 
         <div className="mt-14">
+          <h2 className="sr-only">Daftar barang</h2>
           <Koleksi />
         </div>
 

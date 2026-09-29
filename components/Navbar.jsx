@@ -48,7 +48,7 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="Positive Crave — beranda">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="PositiveCrave — beranda">
           <span aria-hidden="true" className="h-4 w-4 bg-neon" />
           <span className="text-base font-extrabold tracking-tight text-chalk">
             Positive<span className="text-neon">Crave</span>
